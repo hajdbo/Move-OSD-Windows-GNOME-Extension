@@ -39,7 +39,7 @@ let injections=[];
 
 function enable() {
 	
-	let _settings = Convenience.getSettings('org.gnome.shell.extensions.move-osd-windows');
+	let _settings = Convenience.getSettings('org.gnome.shell.extensions.better-osd');
 	
 	injections['show'] = injectToFunction(OsdWindow.OsdWindow.prototype, 'show',  function(){
 		let monitor = Main.layoutManager.monitors[this._monitorIndex];
