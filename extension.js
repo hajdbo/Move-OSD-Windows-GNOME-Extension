@@ -52,7 +52,7 @@ function enable() {
 		this._box.translation_y = v_percent * monitor.height / 100;
 		
 		this._icon.icon_size = osd_size * monitor.height / 100 / 2;
-		this._boxConstraint._minsize = osd_size * monitor.height / 100;
+		this._boxConstraint._minSize = osd_size * monitor.height / 100;
 		
 		imports.ui.osdWindow.HIDE_TIMEOUT = hide_delay;
 	});
@@ -65,6 +65,7 @@ function disable() {
 	for (let i = 0; i < arrayOSD.length; i++) {
 		arrayOSD[i]._relayout();
 		arrayOSD[i]._box.translation_x = 0;
+		imports.ui.osdWindow.HIDE_TIMEOUT = 1500;
 	}
 	
 	removeInjection(OsdWindow.OsdWindow.prototype, injections, 'show');
