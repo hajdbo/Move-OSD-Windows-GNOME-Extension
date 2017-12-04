@@ -12,4 +12,4 @@ You may need to restart the gnome shell environnment ("logout and login again", 
 
 ## Screenshot
 
-![Screenshot](http://i.imgur.com/uJPgGkD.png)
+![Screenshot](https://i.imgur.com/ZcfHz07.jpg)
