@@ -71,6 +71,48 @@ const OSDSettingsWidget = new GObject.Class({
 	vBox.pack_start(new Gtk.Label({ label: labelVerticalPercentage, use_markup: true, halign: Gtk.Align.START }), false, false, 0);
 	vBox.pack_end(verticalPercentage, false, false, 0);
 	this.add(vBox);
+		
+	//-------------------------------------------------------
+		
+	let labelSizePercentage = _("Size (percentage) :");
+		
+	let sizePercentage = new Gtk.SpinButton();
+        sizePercentage.set_sensitive(true);
+        sizePercentage.set_range(0, 100);
+	sizePercentage.set_value(20);
+	sizePercentage.set_value(this._settings.get_int('size'));
+        sizePercentage.set_increments(1, 2);
+        
+	sizePercentage.connect('value-changed', Lang.bind(this, function(w){
+		var value = w.get_value_as_int();
+		this._settings.set_int('size', value);
+	}));
+		
+	let vBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 15 });
+	vBox.pack_start(new Gtk.Label({ label: labelSizePercentage, use_markup: true, halign: Gtk.Align.START }), false, false, 0);
+	vBox.pack_end(sizePercentage, false, false, 0);
+	this.add(vBox);
+		
+	//-------------------------------------------------------
+		
+	let labelDelay = _("Hide Delay (ms) :");
+		
+	let hideDelay = new Gtk.SpinButton();
+        hideDelay.set_sensitive(true);
+        hideDelay.set_range(0, 5000);
+	hideDelay.set_value(1500);
+	hideDelay.set_value(this._settings.get_int('delay'));
+        hideDelay.set_increments(1, 2);
+        
+	hideDelay.connect('value-changed', Lang.bind(this, function(w){
+		var value = w.get_value_as_int();
+		this._settings.set_int('delay', value);
+	}));
+		
+	let vBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 15 });
+	vBox.pack_start(new Gtk.Label({ label: labelDelay, use_markup: true, halign: Gtk.Align.START }), false, false, 0);
+	vBox.pack_end(hideDelay, false, false, 0);
+	this.add(vBox);
     }
 });
 
