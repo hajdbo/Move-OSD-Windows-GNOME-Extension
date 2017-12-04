@@ -88,10 +88,10 @@ const OSDSettingsWidget = new GObject.Class({
 		this._settings.set_int('size', value);
 	}));
 		
-	let vBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 15 });
-	vBox.pack_start(new Gtk.Label({ label: labelSizePercentage, use_markup: true, halign: Gtk.Align.START }), false, false, 0);
-	vBox.pack_end(sizePercentage, false, false, 0);
-	this.add(vBox);
+	let sizeBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 15 });
+	sizeBox.pack_start(new Gtk.Label({ label: labelSizePercentage, use_markup: true, halign: Gtk.Align.START }), false, false, 0);
+	sizeBox.pack_end(sizePercentage, false, false, 0);
+	this.add(sizeBox);
 		
 	//-------------------------------------------------------
 		
@@ -109,10 +109,10 @@ const OSDSettingsWidget = new GObject.Class({
 		this._settings.set_int('delay', value);
 	}));
 		
-	let vBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 15 });
-	vBox.pack_start(new Gtk.Label({ label: labelDelay, use_markup: true, halign: Gtk.Align.START }), false, false, 0);
-	vBox.pack_end(hideDelay, false, false, 0);
-	this.add(vBox);
+	let delayBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 15 });
+	delayBox.pack_start(new Gtk.Label({ label: labelDelay, use_markup: true, halign: Gtk.Align.START }), false, false, 0);
+	delayBox.pack_end(hideDelay, false, false, 0);
+	this.add(delayBox);
     }
 });
 
