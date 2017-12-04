@@ -13,3 +13,6 @@ You may need to restart the gnome shell environnment ("logout and login again", 
 ## Screenshot
 
 ![Screenshot](https://i.imgur.com/ZcfHz07.jpg)
+
+## Details
+The original OSD source code is around these lines: https://github.com/GNOME/gnome-shell/blob/master/js/ui/osdWindow.js#L194
