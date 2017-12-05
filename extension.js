@@ -1,6 +1,7 @@
 const Lang = imports.lang;
 const Main = imports.ui.main;
 const OsdWindow = imports.ui.osdWindow;
+const OsdWindowManager = Main.osdWindowManager;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
@@ -10,6 +11,20 @@ const Convenience = Me.imports.convenience;
 
 function init() {
     Convenience.initTranslations();
+}
+
+//------------------------------------------------
+
+function style() {
+    for (let monitorIndex = 0; monitorIndex < OsdWindowManager._osdWindows.length; monitorIndex++) {
+        OsdWindowManager._osdWindows[monitorIndex]._box.add_style_class_name('osd-transparency');
+    }
+}
+
+function unstyle() {
+    for (let monitorIndex = 0; monitorIndex < OsdWindowManager._osdWindows.length; monitorIndex++) {
+        OsdWindowManager._osdWindows[monitorIndex]._box.remove_style_class_name('osd-transparency');
+    }
 }
 
 //------------------------------------------------
@@ -34,12 +49,16 @@ function removeInjection(object, injection, name) {
 }
 
 let injections=[];
+let _id;
 
 //---------------------------------------------
 
 function enable() {
 	
 	let _settings = Convenience.getSettings('org.gnome.shell.extensions.better-osd');
+	
+	style();
+        _id = Main.layoutManager.connect('monitors-changed', Lang.bind(this, this.style));
 	
 	injections['show'] = injectToFunction(OsdWindow.OsdWindow.prototype, 'show',  function(){
 		let monitor = Main.layoutManager.monitors[this._monitorIndex];
@@ -60,8 +79,10 @@ function enable() {
 
 function disable() {
 	
-	let arrayOSD = Main.osdWindowManager._osdWindows
+	unstyle();
+	Main.layoutManager.disconnect(_id);
 	
+	let arrayOSD = Main.osdWindowManager._osdWindows
 	for (let i = 0; i < arrayOSD.length; i++) {
 		arrayOSD[i]._relayout();
 		arrayOSD[i]._box.translation_x = 0;
@@ -70,4 +91,3 @@ function disable() {
 	
 	removeInjection(OsdWindow.OsdWindow.prototype, injections, 'show');
 }
-
