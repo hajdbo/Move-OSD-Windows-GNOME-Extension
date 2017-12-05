@@ -1,5 +1,6 @@
 # Better OSD (GNOME Extension)
 A GNOME Shell extension allowing the user to set the position, size and delay of the OSD windows for sound or luminosity.
+Also adds transparency.
 
 ## Installation
 The better option is to install it from https://extensions.gnome.org/extension/1345/better-osd/
