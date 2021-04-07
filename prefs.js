@@ -13,7 +13,7 @@ const Convenience = Me.imports.convenience;
 //-----------------------------------------------
 
 function init() {
-Convenience.initTranslations();
+	Convenience.initTranslations();
 }
 
 //-----------------------------------------------
@@ -24,7 +24,6 @@ GTypeName: 'OSDPrefsWidget'
 }, class OSDSettingsWidget extends Gtk.Box {
 
 _init(params) {
-	super._init(params);
 	let frame = new Gtk.Box({
 		orientation: Gtk.Orientation.VERTICAL,
 		margin_top: 30,
@@ -41,7 +40,7 @@ _init(params) {
 	let horizontalPercentage = new Gtk.SpinButton();
 		horizontalPercentage.set_sensitive(true);
 		horizontalPercentage.set_range(-60, 60);
-	horizontalPercentage.set_value(0);
+		horizontalPercentage.set_value(0);
 		horizontalPercentage.set_value(this._settings.get_int('horizontal'));
 		horizontalPercentage.set_increments(1, 2);
 		
@@ -51,9 +50,10 @@ _init(params) {
 	}));
 		
 	let hBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 15 });
-	hBox.prepend(new Gtk.Label({ label: labelHorizontalPercentage, use_markup: true, halign: Gtk.Align.START }));
-	hBox.append(horizontalPercentage);
-	frame.append(hBox);
+		hBox.prepend(new Gtk.Label({ label: labelHorizontalPercentage, use_markup: true, halign: Gtk.Align.START }));
+		hBox.append(horizontalPercentage);
+		frame.append(hBox);
+
 	//-------------------------------------------------------
 		
 	let labelVerticalPercentage = _("Vertical position (percentage) :");
@@ -61,8 +61,8 @@ _init(params) {
 	let verticalPercentage = new Gtk.SpinButton();
 		verticalPercentage.set_sensitive(true);
 		verticalPercentage.set_range(-110, 110);
-	verticalPercentage.set_value(70);
-	verticalPercentage.set_value(this._settings.get_int('vertical'));
+		verticalPercentage.set_value(70);
+		verticalPercentage.set_value(this._settings.get_int('vertical'));
 		verticalPercentage.set_increments(1, 2);
 		
 	verticalPercentage.connect('value-changed', Lang.bind(this, function(w){
@@ -71,9 +71,9 @@ _init(params) {
 	}));
 		
 	let vBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 15 });
-	vBox.prepend(new Gtk.Label({ label: labelVerticalPercentage, use_markup: true, halign: Gtk.Align.START }));
-	vBox.append(verticalPercentage);
-	frame.append(vBox);
+		vBox.prepend(new Gtk.Label({ label: labelVerticalPercentage, use_markup: true, halign: Gtk.Align.START }));
+		vBox.append(verticalPercentage);
+		frame.append(vBox);
 
 	//-------------------------------------------------------
 		
@@ -82,8 +82,8 @@ _init(params) {
 	let sizePercentage = new Gtk.SpinButton();
 		sizePercentage.set_sensitive(true);
 		sizePercentage.set_range(0, 100);
-	sizePercentage.set_value(20);
-	sizePercentage.set_value(this._settings.get_int('size'));
+		sizePercentage.set_value(20);
+		sizePercentage.set_value(this._settings.get_int('size'));
 		sizePercentage.set_increments(1, 2);
 		
 	sizePercentage.connect('value-changed', Lang.bind(this, function(w){
@@ -92,9 +92,10 @@ _init(params) {
 	}));
 		
 	let sizeBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 15 });
-	sizeBox.prepend(new Gtk.Label({ label: labelSizePercentage, use_markup: true, halign: Gtk.Align.START }));
-	sizeBox.append(sizePercentage);
-	frame.append(sizeBox);
+		sizeBox.prepend(new Gtk.Label({ label: labelSizePercentage, use_markup: true, halign: Gtk.Align.START }));
+		sizeBox.append(sizePercentage);
+		frame.append(sizeBox);
+		
 	//-------------------------------------------------------
 		
 	let labelDelay = _("Hide Delay (ms) :");
@@ -102,8 +103,8 @@ _init(params) {
 	let hideDelay = new Gtk.SpinButton();
 		hideDelay.set_sensitive(true);
 		hideDelay.set_range(0, 5000);
-	hideDelay.set_value(1500);
-	hideDelay.set_value(this._settings.get_int('delay'));
+		hideDelay.set_value(1500);
+		hideDelay.set_value(this._settings.get_int('delay'));
 		hideDelay.set_increments(1, 2);
 		
 	hideDelay.connect('value-changed', Lang.bind(this, function(w){
@@ -112,9 +113,9 @@ _init(params) {
 	}));
 		
 	let delayBox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL, spacing: 15 });
-	delayBox.prepend(new Gtk.Label({ label: labelDelay, use_markup: true, halign: Gtk.Align.START }));
-	delayBox.append(hideDelay);
-	frame.append(delayBox);
+		delayBox.prepend(new Gtk.Label({ label: labelDelay, use_markup: true, halign: Gtk.Align.START }));
+		delayBox.append(hideDelay);
+		frame.append(delayBox);
 	return frame;
 }
 });
@@ -124,5 +125,5 @@ _init(params) {
 //I guess this is like the "enable" in extension.js : something called each
 //time he user try to access the settings' window
 function buildPrefsWidget() {
-return new OSDSettingsWidget();
+	return new OSDSettingsWidget();
 }
