@@ -3,14 +3,8 @@
   "description": "Better OSD (move and resize the OSD popups).", 
   "gettext-domain": "better-osd", 
   "name": "Better OSD", 
-  "shell-version": [
-    "3.18", 
-    "3.22", 
-    "3.24",
-    "3.26",
-    "40"
-  ], 
+  "shell-version": ["40"], 
   "url": "", 
   "uuid": "better-osd", 
-  "version": 2
+  "version": 3
 }
